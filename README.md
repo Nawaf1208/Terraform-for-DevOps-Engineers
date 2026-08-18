@@ -138,3 +138,138 @@ terraform destroy -auto-approve
 ```
 
 </details>
+
+<details>
+<summary><b><i>3.Rename S3 Bucket
+
+- An existing S3 bucket tracked by Terraform. If you don't have it, you can use the following block and run `terraform apply`:
+  ```Terraform
+  resource "aws_s3_bucket" "some_bucket" {
+      bucket = "some-old-bucket"
+  }
+  ```
+- Rename an existing S3 bucket and make sure it's still tracked by Terraform
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+# A bucket name is immutable in AWS so we'll have to create a new bucket
+aws s3 mb s3://some-new-bucket-123
+
+# Sync old bucket to new bucket
+aws s3 sync s3://some-old-bucket s3://some-new-bucket-123
+
+# Option 1 (remove and import)
+
+## Remove the old bucket from Terraform's state
+terraform state rm aws_s3_bucket.some_bucket
+
+## Import new bucket to Terraform's state
+terraform import aws_s3_bucket.some_bucket some-new-bucket-123
+
+: '
+aws_s3_bucket.some_bucket: Refreshing state... [id=some-new-bucket-123]
+
+Import successful!
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+'
+
+# Option 2 (move)
+
+## Move the old bucket from Terraform's state to the new one
+terraform state mv aws_s3_bucket.some_bucket some-new-bucket-123
+
+: '
+Move "aws_s3_bucket.some_bucket" to "aws_s3_bucket.some-new-bucket-123"
+Successfully moved 1 object(s).
+'
+
+# Modify Terraform file
+
+# Modify the Terraform definition to include the new name
+# resource "aws_s3_bucket" "some_bucket" {
+#    bucket = "some-new-bucket-123"
+# }
+
+# Remove old bucket
+aws s3 rm s3://some-old-bucket --recursive
+aws s3 rb s3://some-old-bucket
+```
+
+</details>
+
+<details>
+<summary><b><i>4.Creating Custom VPC and Subnets with Terraform
+
+- Create a custom VPC with a specified CIDR block. For example, you can use `10.0.0.0/16`.
+- Create two subnets within the VPC, each with a different CIDR block. For example, you can use `10.0.0.0/20` for the first subnet and `10.0.16.0/20` for the second subnet.
+- Both subnets should be in different availability zones to ensure high availability.
+- Ensure that the VPC and subnets are tracked by Terraform.
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+# Create a directory for the Terraform configuration
+mkdir vpc_subnet_creation && cd vpc_subnet_creation
+```
+
+```Terraform
+# Create the main.tf file with the VPC and subnets configuration
+touch main.tf
+```
+
+```Terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "your-region" # e.g., ap-south-1
+}
+
+resource "aws_vpc" "my_custom_vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "my_custom_vpc_made_with_terraform"
+  }
+}
+
+resource "aws_subnet" "Subnet_A" {
+  cidr_block       = "10.0.0.0/20"
+  vpc_id            = aws_vpc.my_custom_vpc.id
+  availability_zone = "your-availability-zone-a" # e.g., ap-south-1a
+  tags = {
+    "Name" = "Subnet A"
+  }
+}
+resource "aws_subnet" "Subnet_B" {
+  cidr_block       = "10.0.16.0/20"
+  vpc_id            = aws_vpc.my_custom_vpc.id
+  availability_zone = "your-availability-zone-b" # e.g., ap-south-1b
+  tags = {
+    "Name" = "Subnet B"
+  }
+}
+```
+
+```Terraform
+# Initialize Terraform to download the AWS provider
+terraform init
+```
+
+```Terraform
+# Apply the Terraform configuration to create the VPC and subnets
+terraform apply -auto-approve
+```
+
+</details>

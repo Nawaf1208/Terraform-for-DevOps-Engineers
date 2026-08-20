@@ -273,3 +273,112 @@ terraform apply -auto-approve
 ```
 
 </details>
+
+## Questions
+
+## Terraform 101
+
+<details>
+<summary><b><i>5.What is Terraform?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. 
+
+Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
+
+</details>
+
+<details>
+<summary><b><i>6.What are the advantages in using Terraform or IaC in general?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- Full automation: In the past, resource creation, modification and removal were handled manually or by using a set of tooling. With Terraform or other IaC technologies, you manage the full lifecycle in an automated fashion.
+
+- Modular and Reusable: Code that you write for certain purposes can be used and assembled in different ways. You can write code to create resources on a public cloud and it can be shared with other teams who can also use it in their account on the same (or different) cloud>
+
+- Improved testing: Concepts like CI can be easily applied on IaC based projects and code snippets. This allow you to test and verify operations beforehand.
+
+</details>
+
+<details>
+<summary><b><i>7.What is one reason why manual processes can be helpful?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+For learning a platform when first starting out
+
+</details>
+
+<details>
+<summary><b><i>8.Why is it advisable to avoid using manual processes when creating infrastructure at scale?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Manual processes for creating infrastructure are slow because they require human intervention for each step, which delays deployment. They are error-prone since manual configuration increases the risk of mistakes and inconsistencies. Additionally, these processes are not easily repeatable, making it difficult to ensure the same infrastructure setup across different environments—unlike Infrastructure as Code (IaC), which automates and standardizes deployments.
+
+</details>
+
+<details>
+<summary><b><i>9.What are some of Terraform features?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- Declarative: Terraform uses the declarative approach (rather than the procedural one) in order to define end-status of the resources
+
+- No agents: as opposed to other technologies (e.g. Puppet) where you use a model of agent and server, with Terraform you use the different APIs (of clouds, services, etc.) to perform the operations
+
+- Community: Terraform has strong community who constantly publishes modules and fixes when needed. This ensures there is good modules maintenance and users can get support quite quickly at any point
+
+</details>
+
+<details>
+<summary><b><i>10.What language does Terraform uses?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+A DSL called "HCL" (Hashicorp Configuration Language). A declarative language for defining infrastructure.
+
+</details>
+
+<details>
+<summary><b><i>11.What's a typical Terraform workflow?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- Write Terraform definitions: `.tf` files written in HCL that described the desired infrastructure state (and run `terraform init` at the very beginning)
+
+- Review: With command such as `terraform plan` you can get a glance at what Terraform will perform with the written definitions
+
+- Apply definitions: With the command `terraform apply` Terraform will apply the given definitions, by adding, modifying or removing the resources
+
+This is a manual process. Most of the time this is automated so user submits a PR/MR to propose terraform changes, there is a process to test these changes and once merged they are applied (`terraform apply`).
+
+</details>
+
+<details>
+<summary><b><i>12.What are some use cases for using Terraform?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- Infra provisioning and management: You need to automated or code your infra so you are able to test it easily, apply it and make any changes necessary.
+
+- Multi-cloud environment: You manage infrastructure on different clouds, but looking for a consistent way to do it across the clouds
+
+- Consistent environments: You manage environments such as test, production, staging and looking for a way to have them consistent so any modification in one of them, applies to other environments as well
+
+</details>
+
+<details>
+<summary><b><i>13.What's the difference between Terraform and technologies such as Ansible, Puppet, Chef, etc.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Terraform is considered to be an IaC technology. It's used for provisioning resources, for managing infrastructure on different platforms.
+
+Ansible, Puppet and Chef are Configuration Management technologies. They are used once there is an instance running and you would like to apply some configuration on it like installing an application, applying security policy, etc.
+
+To be clear, CM tools can be used to provision resources so in the end goal of having infrastructure, both Terraform and something like Ansible, can achieve the same result. The difference is in the how. Ansible doesn't saves the state of resources, it doesn't know how many instances there are in your environment as opposed to Terraform. At the same time while Terraform can perform configuration management tasks, it has less modules support for that specific goal and it doesn't track the task execution state as Ansible. The differences are there and it's most of the time recommended to mix the technologies, so Terraform used for managing infrastructure and CM technologies used for configuration on top of that infrastructure.
+
+</details>

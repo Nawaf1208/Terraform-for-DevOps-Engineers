@@ -456,6 +456,8 @@ $\color{green}{\text{Answer}}$
 - `-` - the resource or attribute is going to be removed
 - `-/+` - the resource or attribute is going to be replaced
 
+</details>
+
 <details>
 <summary><b><i>19.How to cleanup Terraform resources? Why the user should be careful doing so?</i></b></summary>
 

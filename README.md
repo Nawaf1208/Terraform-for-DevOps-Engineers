@@ -383,7 +383,7 @@ To be clear, CM tools can be used to provision resources so in the end goal of h
 
 </details>
 
-## Terraform-for-DevOps-Engineers
+## Terraform Hands-On Basics
 
 <details>
 <summary><b><i>14.Explain the following block of Terraform code
@@ -445,9 +445,7 @@ Run `terraform apply`. That will apply the changes described in your `.tf` files
 <summary><b><i>18.Explain the meaning of the following strings that seen at the beginning of each line When you run `terraform apply`
 
 - `+`
-
 - `-`
-
 - `-/+`
 
 </i></b></summary>
@@ -455,9 +453,7 @@ Run `terraform apply`. That will apply the changes described in your `.tf` files
 $\color{green}{\text{Answer}}$
 
 - `+` - The resource or attribute is going to be added
-
 - `-` - the resource or attribute is going to be removed
-
 - `-/+` - the resource or attribute is going to be replaced
 
 <details>

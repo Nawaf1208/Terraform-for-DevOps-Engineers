@@ -382,3 +382,87 @@ Ansible, Puppet and Chef are Configuration Management technologies. They are use
 To be clear, CM tools can be used to provision resources so in the end goal of having infrastructure, both Terraform and something like Ansible, can achieve the same result. The difference is in the how. Ansible doesn't saves the state of resources, it doesn't know how many instances there are in your environment as opposed to Terraform. At the same time while Terraform can perform configuration management tasks, it has less modules support for that specific goal and it doesn't track the task execution state as Ansible. The differences are there and it's most of the time recommended to mix the technologies, so Terraform used for managing infrastructure and CM technologies used for configuration on top of that infrastructure.
 
 </details>
+
+## Terraform-for-DevOps-Engineers
+
+<details>
+<summary><b><i>14.Explain the following block of Terraform code
+
+```Terraform
+resource "aws_instance" "some-instance" {
+  ami           = "ami-201720221991yay"
+  instance_type = "t2.micro
+}
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+It's a resource of type `aws_instance` used to provision an instance. The name of the resource (NOT INSTANCE) is `some-instance`.
+
+The instance itself will be provisioned with type `t2.micro` and using an image of the AMI `ami-201720221991yay`.
+
+</details>
+
+<details>
+<summary><b><i>15.What do you do next after writing the following in main.tf file?
+
+```Terraform
+resource "aws_instance" "some-instance" {
+  ami           = "ami-201720221991yay"
+  instance_type = "t2.micro
+}
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Run `terraform init`. This will scan the code in the directory to figure out which providers are used (in this case AWS provider) and will download them.
+
+</details>
+
+<details>
+<summary><b><i>16.You've executed `terraform init` and now you would like to move forward to creating the resources but you have concerns and would like to make be 100% sure on what you are going to execute. What should you be doing?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Execute `terraform plan`. That will provide a detailed information on what Terraform will do once you apply the changes.
+
+</details>
+
+<details>
+<summary><b><i>17.You've downloaded the providers, seen the what Terraform will do (with terraform plan) and you are ready to actually apply the changes. What should you do next?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Run `terraform apply`. That will apply the changes described in your `.tf` files.
+
+</details>
+
+<details>
+<summary><b><i>18.Explain the meaning of the following strings that seen at the beginning of each line When you run `terraform apply`
+
+`+`
+`-`
+`-/+`
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`+` - The resource or attribute is going to be added
+`-` - the resource or attribute is going to be removed
+`-/+` - the resource or attribute is going to be replaced
+
+<details>
+<summary><b><i>19.How to cleanup Terraform resources? Why the user should be careful doing so?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`terraform destroy` will cleanup all the resources tracked by Terraform.
+
+A user should be careful with this command because there is no way to revert it. Sure, you can always run again "apply" but that can take time, generates completely new resources, etc.
+
+</details>

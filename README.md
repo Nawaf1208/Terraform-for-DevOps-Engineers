@@ -444,17 +444,21 @@ Run `terraform apply`. That will apply the changes described in your `.tf` files
 <details>
 <summary><b><i>18.Explain the meaning of the following strings that seen at the beginning of each line When you run `terraform apply`
 
-`+`
-`-`
-`-/+`
+- `+`
+
+- `-`
+
+- `-/+`
 
 </i></b></summary>
 
 $\color{green}{\text{Answer}}$
 
-`+` - The resource or attribute is going to be added
-`-` - the resource or attribute is going to be removed
-`-/+` - the resource or attribute is going to be replaced
+- `+` - The resource or attribute is going to be added
+
+- `-` - the resource or attribute is going to be removed
+
+- `-/+` - the resource or attribute is going to be replaced
 
 <details>
 <summary><b><i>19.How to cleanup Terraform resources? Why the user should be careful doing so?</i></b></summary>

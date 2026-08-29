@@ -468,3 +468,46 @@ $\color{green}{\text{Answer}}$
 A user should be careful with this command because there is no way to revert it. Sure, you can always run again "apply" but that can take time, generates completely new resources, etc.
 
 </details>
+
+## Dependencies
+
+<details>
+<summary><b><i>20.Sometimes you need to reference some resources in the same or separate .tf file. Why and how it's done?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Because resources are sometimes connected or need to be connected. For example, you create an AWS instance with `aws_instance` resource but, at the same time you would like also to allow some traffic to it (because by default traffic is not allowed). For that you'll create a `aws_security_group` resource and then, in your `aws_instance` resource, you'll reference it.
+
+```Terraform
+resource "aws_instance" "some-instance" {
+
+  ami           = "some-ami"
+  instance_type = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.instance.id]
+
+}
+```
+
+</details>
+
+<details>
+<summary><b><i>21.Does it matter in which order Terraform creates resources?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Yes, when there is a dependency between different Terraform resources, you want the resources to be created in the right order and this is exactly what Terraform does.
+
+To make it ever more clear, if you have a resource X that references the ID of resource Y, it doesn't makes sense to create first resource X because it won't have any ID to get from a resource that wasn't created yet.
+
+</details>
+
+<details>
+<summary><b><i>22.Is there a way to print/see the dependencies between the different resources?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Yes, with `terraform graph`
+
+The output is in DOT - A graph description language.
+
+</details>

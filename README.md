@@ -511,3 +511,63 @@ Yes, with `terraform graph`
 The output is in DOT - A graph description language.
 
 </details>
+
+## Providers
+
+<details>
+<summary><b><i>23.Explain what is a "provider".</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Terraform relies on plugins called "providers" to interact with cloud providers, SaaS providers, and other APIs...Each provider adds a set of resource types and/or data sources that Terraform can manage. Every resource type is implemented by a provider; without providers, Terraform can't manage any kind of infrastructure.
+
+</details>
+
+<details>
+<summary><b><i>24.Where can you find publicly available providers?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+In the "Terraform Registry" website.
+
+</details>
+
+<details>
+<summary><b><i>25.What are the names of the providers in this case?
+
+```Terraform  
+terraform {
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+      }
+      azurerm = {
+        source  = "hashicorp/azurerm"
+        version = "~> 3.0.2"
+      }
+    }
+  }
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+azurerm and aws
+
+</details>
+
+<details>
+<summary><b><i>26.How to install a provider?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+You write a provider block like the following one and run `terraform init`
+
+```Terraform
+provider "aws" {
+  region = "us-west-1"
+}
+```
+
+</details>

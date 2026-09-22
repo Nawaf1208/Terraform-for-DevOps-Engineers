@@ -571,3 +571,45 @@ provider "aws" {
 ```
 
 </details>
+
+<details>
+<summary><b><i>27.True or False? Applying the following Terraform configuration will fail since no source or version specific for 'aws' provider.
+
+```Terraform
+terraform {
+    required_providers {
+      aws = {}
+    }
+  }
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. It will look for "aws" provider in the public Terraform registry and will take the latest version.
+
+</details>
+
+<details>
+<summary><b><i>28.Write a configuration of a Terraform provider.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+AWS is one of the most popular providers in Terraform. Here is an example of how to configure it to use one specific region and specifying a specific version of the provider
+
+```Terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-west-2"
+}
+```

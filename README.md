@@ -613,3 +613,64 @@ provider "aws" {
   region = "us-west-2"
 }
 ```
+
+</details>
+
+<details>
+<summary><b><i>29.Where Terraform installs providers from by default?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+By default Terraform providers are installed from Terraform Registry
+
+</details>
+
+<details>
+<summary><b><i>30.What is the Terraform Registry?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+The Terraform Registry provides a centralized location for official and community-managed providers and modules.
+
+</details>
+
+<details>
+<summary><b><i>31.Where providers are downloaded to?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`.terraform` directory.
+
+</details>
+
+<details>
+<summary><b><i>32.Describe in high level what happens behind the scenes when you run terraform init on on the following Terraform configuration
+
+```Terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+```
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+1. Terraform checks if there is an aws provider in this address: registry.terraform.io/hashicorp/aws
+2. Installs latest version of aws provider (assuming the URL exists and valid)
+
+</details>
+
+<details>
+<summary><b><i>33.True or False? You can install providers only from hashicorp.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+False. You can specify any provider from any URL, not only those from hashicorp.
+
+</details>

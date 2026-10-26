@@ -674,3 +674,56 @@ $\color{green}{\text{Answer}}$
 False. You can specify any provider from any URL, not only those from hashicorp.
 
 </details>
+
+## Variables
+
+### Input Variables
+
+<details>
+<summary><b><i>34.What are input variables good for in Terraform?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Variables allow you define piece of data in one location instead of repeating the hardcoded value of it in multiple different locations. Then when you need to modify the variable's value, you do it in one location instead of changing each one of the hardcoded values.
+
+</details>
+
+<details>
+<summary><b><i>35.What type of input variables are supported in Terraform?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+string
+number
+bool
+list(<TYPE>)
+set(<TYPE>)
+map(<TYPE>)
+object({<ATTR_NAME> = <TYPE>, ... })
+tuple([<TYPE>, ...])
+```
+
+</details>
+
+<details>
+<summary><b><i>36.What's the default input variable type in Terraform?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+any
+```
+
+</details>
+
+<details>
+<summary><b><i>37.What ways are there to pass values for input variables?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+- Using `-var` option in the CLI
+- Using a file by using the `-var-file` option in the CLI
+- Environment variable that starts with `TF_VAR_<VAR_NAME>`
+
+</details>

@@ -808,3 +808,54 @@ While removing the variable is theoretically a correct answer, it will probably 
 You can use something like the `-var` option to provide the value and avoid being prompted to insert a value. Another option is to run `export TF_VAR_<VAR_NAME>=<VALUE>`.
 
 </details>
+
+### Output Variables
+
+<details>
+<summary><b><i>44.What are output variables? Why do we need them?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Output variable allow you to display/print certain piece of data as part of Terraform execution.
+
+The most common use case for it is probably to print the IP address of an instance. Imagine you provision an instance and you would like to know what the IP address to connect to it. Instead of looking for it for the console/OS, you can use the output variable and print that piece of information to the screen
+
+</details>
+
+<details>
+<summary><b><i>45.Explain the "sensitive" parameter of output variable.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+When set to "true", Terraform will avoid logging output variable's data. The use case for it is sensitive data such as password or private keys.
+
+</details>
+
+<details>
+<summary><b><i>46.Explain the "depends" parameter of output variable.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+It is used to set explicitly dependency between the output variable and any other resource. Use case: some piece of information is available only once another resource is ready.
+
+</details>
+
+### Locals 
+
+<details>
+<summary><b><i>47.What are locals?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Similarly to variables they serve as placeholders for data and values. Differently from variables, users can't override them by passing different values.
+
+</details>
+
+<details>
+<summary><b><i>48.What's the use case for using locals?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+You have multiple hardcoded values that repeat themselves in different sections, but at the same time you don't want to expose them as in, allow users to override values.
+
+</details>

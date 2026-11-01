@@ -796,6 +796,8 @@ Terraform loads variables in the following order, with later sources taking prec
 - The file `terraform.tfvars`
 - Using `-var` or `-var-file`
 
+</details>
+
 <details>
 <summary><b><i>43.Whenever you run terraform apply, it prompts to enter a value for a given variable. How to avoid being prompted?</i></b></summary>
 

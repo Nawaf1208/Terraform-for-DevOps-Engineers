@@ -727,3 +727,82 @@ $\color{green}{\text{Answer}}$
 - Environment variable that starts with `TF_VAR_<VAR_NAME>`
 
 </details>
+
+<details>
+<summary><b><i>38.How to reference a variable?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Using the syntax `var.<VAR_NAME>`
+
+</details>
+
+<details>
+<summary><b><i>39.You are configuring a variable for your Terraform configuration. Which arguments are required when configuring a `variable` block? 
+  
+1. `type` and `description`
+2. There are no required arguments
+3. `type`
+4. `type`, `description` and `default`
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+2. There are no required arguments
+
+In Terraform, when declaring a variable block, there are no mandatory arguments. You can create a variable with an empty block like:
+
+variable "example" {}
+
+While `type`, `description`, and `default` are commonly used, they're all optional. The `type` argument helps with validation, `description` documents the variable's purpose, and `default` provides a fallback value if none is specified.
+
+</details>
+
+<details>
+<summary><b><i>40.What is the effect of setting variable as "sensitive"?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+It doesn't show its value when you run `terraform apply` or `terraform plan` but eventually it's still recorded in the state file.
+
+</details>
+
+<details>
+<summary><b><i>41.True or False? If an expression's result depends on a sensitive variable, it will be treated as sensitive as well.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+True
+
+</details>
+
+<details>
+<summary><b><i>42.The same variable is defined in the following places:
+
+- The file terraform.tfvars
+- Environment variable
+- Using -var or -var-file
+
+According to variable precedence, which source will be used first?
+
+</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
+
+- Environment variable
+- The file `terraform.tfvars`
+- Using `-var` or `-var-file`
+
+<details>
+<summary><b><i>43.Whenever you run terraform apply, it prompts to enter a value for a given variable. How to avoid being prompted?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+While removing the variable is theoretically a correct answer, it will probably fail the execution.
+
+You can use something like the `-var` option to provide the value and avoid being prompted to insert a value. Another option is to run `export TF_VAR_<VAR_NAME>=<VALUE>`.
+
+</details>

@@ -859,3 +859,38 @@ $\color{green}{\text{Answer}}$
 You have multiple hardcoded values that repeat themselves in different sections, but at the same time you don't want to expose them as in, allow users to override values.
 
 </details>
+
+### Variables Hands-On
+
+<details>
+<summary><b><i>49.Demonstrate input variable definition with type, description and default parameters.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+variable "app_id" {
+  type        = string
+  description = "The id of application"
+  default     = "some_value"
+}
+```
+
+</details>
+
+<details>
+<summary><b><i>50.How to define an input variable which is an object with attributes "model" (string), "color" (string), "year" (number)?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+variable "car_model" {
+  description = "Car model object"
+  type        = object({
+    model   = string
+    color   = string
+    year    = number
+  })
+}
+```
+
+</details>

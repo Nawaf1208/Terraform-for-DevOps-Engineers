@@ -929,7 +929,7 @@ resource "libvirt_domain" "vm1" {
 </details>
 
 <details>
-<summary><b><i>52.How to reference variable from inside of string literal? How that type of expression is called?
+<summary><b><i>52.How to reference variable from inside of string literal? How that type of expression is called?</i></b></summary>
 
 $\color{green}{\text{Answer}}$
 

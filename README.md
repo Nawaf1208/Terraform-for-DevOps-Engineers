@@ -894,3 +894,101 @@ variable "car_model" {
 ```
 
 </details>
+
+<details>
+<summary><b><i>51.How to reference variables?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Variable are referenced with var.VARIABLE_NAME syntax.
+
+vars.tf:
+
+```Terraform
+variable "memory" {
+  type = string
+  default "8192"
+}
+
+variable "cpu" {
+  type = string
+  default = "4"
+}
+```
+
+main.tf:
+
+```Terraform
+resource "libvirt_domain" "vm1" {
+   name = "vm1"
+   memory = var.memory
+   cpu = var.cpu
+}
+```
+
+</details>
+
+<details>
+<summary><b><i>52.How to reference variable from inside of string literal? How that type of expression is called?
+
+$\color{green}{\text{Answer}}$
+
+Using the syntax: `${var.VAR_NAME}`. It's called `interpolation`.
+
+```Terraform
+user_data = <<-EOF
+            This is some fabulos string
+            It demonstrates how to use interpolation
+            Yes, it's truly ${var.awesome_or_meh}
+            EOF
+```
+
+</details>
+
+<details>
+<summary><b><i>53.How can list all outputs without applying Terraform changes?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+`terraform output` will list all outputs without applying any changes
+
+</details>
+
+<details>
+<summary><b><i>54.Can you see the output of specific variable without applying terrafom changes?</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+Yes, with `terraform output <OUTPUT_VAR>`.
+
+</details>
+
+<details>
+<summary><b><i>55.Demonstrate how to define locals.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+locals {
+  x = 2
+  y = "o"
+  z = 2.2
+}
+```
+
+</details>
+
+<details>
+<summary><b><i>56.Demonstrate how to use a local.</i></b></summary>
+
+$\color{green}{\text{Answer}}$
+
+```Terraform
+locals {
+  x = 2
+}
+```
+
+then to use it, you have to use something like this: `local.x`
+
+</details>
